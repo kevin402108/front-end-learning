@@ -120,6 +120,7 @@
 .shop-cart {
     position: relative;
     margin-top: 33px;
+    cursor: pointer;
 }
 
 .shop-cart .iconfont {
@@ -138,6 +139,125 @@
     background: #e26237;
     border-radius: 7px;
 }
+
+.footer {
+    height: 580px;
+    background-color: #F5F5F5;
+}
+
+.service {
+    padding:60px 0;
+    height: 178px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.service ul {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.service li {
+    display: flex;
+    width: 190px;
+    height: 58px;
+}
+
+.service li h5 {
+    margin-right: 20px;
+    width: 58px;
+    height: 58px;
+    background-image: url(../images/sprite.png);
+}
+
+.service li:nth-child(2) h5 {
+    background-position: 0 -58px;
+}
+
+.service li:nth-child(3) h5 {
+    background-position: 0 -116px;
+}
+
+.service li:nth-child(4) h5 {
+    background-position: 0 -174px;
+}
+
+.service li p {
+    font-size: 28px;
+    line-height: 58px;
+}
+
+.help-center {
+    display: flex;
+    padding-top: 60px;
+    justify-content: space-between;
+    height: 300px;
+}
+
+.help-center .left {
+    display: flex;
+}
+.help-center .left dl {
+    padding-right: 84px;
+}
+
+.help-center .left dl:last-child {
+    padding-right: 0;
+}
+
+.help-center .left dt {
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+.help-center .left dd {
+    margin-bottom: 10px;
+}
+
+.help-center .left a {
+    color:#969696;
+}
+
+.help-center .left .icon-customer-service {
+    color:#5EB69C;
+}
+
+.help-center .right ul {
+    display: flex;
+}
+
+.help-center .right ul li:first-child {
+    margin-right: 54px;
+}
+
+.help-center .right .pic img {
+    margin-bottom: 10px;
+    width: 120px;
+    height: 120px;
+}
+
+.help-center .right .pic p {
+    text-align: center;
+    color:#969696;
+}
+
+.copyright p a {
+    margin: 0 10px;
+    color:#A1A1A1;
+}
+
+.copyright p {
+    margin-bottom: 10px;
+    text-align: center;
+    color:#A1A1A1;
+}
+
+
+
+
+
+
+
+
 
 
 
