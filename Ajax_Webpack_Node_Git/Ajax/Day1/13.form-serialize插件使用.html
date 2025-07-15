@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13.form-serialize插件使用</title>
+  <script src="../../lib/form-serialize.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <form action="javascript:;" class="example-form">
+    <input type="text" name="username">
+    <br>
+    <input type="text" name="password">
+    <br>
+    <input type="button" class="btn" value="提交">
+  </form>
+  <!-- 
+    目标：在点击提交时，使用form-serialize插件，快速收集表单元素值
+  -->
+  <script>
+    document.querySelector('.btn').addEventListener('click', () => {
+      const form = document.querySelector('.example-form');
+      const formData = serialize(form,{hash:true,empty:true})
+      console.log(formData)
+      // debugger
+      const {username,password} = formData
+      if (username.length<8){
+        console.log('用户名长度需要大于等于8')
+        // showAlertMsg('用户名长度需要大于等于8',false)
+        return
+      }
+
+      if (password.length<6){
+        console.log('密码长度需要大于等于6')
+        // showAlertMsg('密码长度需要大于等于6',false)
+        return
+      }
+
+      axios({
+        url:'http://hmajax.itheima.net/api/login',
+        method:'post',
+        data:formData
+      }).then(res=>{
+        console.log(res.data.message)
+        // showAlertMsg(res.data.message,true)
+      }).catch(error=>{
+        console.log(error.response.data.message)
+        // showAlertMsg(error.response.data.message,false)
+      })
+    })
+
+/*    function showAlertMsg(msg,isSuccess){
+      const alertBox = document.querySelector('.alert')
+      const bgStyle = isSuccess?'alert-success':'alert-danger'
+      alertBox.innerHTML = msg
+      alertBox.classList.add(bgStyle)
+      alertBox.classList.add('show')
+      //延时2s后提示框消失
+      setTimeout(()=>{
+        alertBox.classList.remove(bgStyle)
+        alertBox.classList.remove('show')
+      },2000)
+    }*/
+  </script>
+</body>
+
+</html>

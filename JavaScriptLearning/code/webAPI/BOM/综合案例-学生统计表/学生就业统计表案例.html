@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生就业统计表</title>
+  <link rel="stylesheet" href="./iconfont/iconfont.css">
+  <link rel="stylesheet" href="css/index.css" />
+  <script>
+    function getSysTime() {
+      const curTime = new Date();
+      const year = curTime.getFullYear();
+      const month = curTime.getMonth()+1;
+      const date = curTime.getDate();
+      const hour = curTime.getHours();
+      let min = curTime.getMinutes();
+      min=min<10?'0'+min:`${min}`;
+      let sec  = curTime.getSeconds();
+      sec=sec<10?'0'+sec:`${sec}`;
+      return `${year}/${month}/${date} ${hour}:${min}:${sec}`;
+    }
+  </script>
+</head>
+
+<body>
+  <h1>学生就业统计表</h1>
+  <form class="info" autocomplete="off">
+    <input type="text" class="uname" name="uname" placeholder="姓名" />
+    <input type="text" class="age" name="age" placeholder="年龄" />
+    <input type="text" class="salary" name="salary" placeholder="薪资" />
+    <select name="gender" class="gender">
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    <select name="city" class="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+    </select>
+    <button class="add">
+      <i class="iconfont icon-tianjia"></i>添加
+    </button>
+  </form>
+
+  <div class="title">共有数据<span>0</span>条</div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>录入时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- <tr>
+        <td>1</td>
+        <td>迪丽热巴</td>
+        <td>23</td>
+        <td>女</td>
+        <td>12000</td>
+        <td>北京</td>
+        <td>2099/9/9 08:08:08</td>
+        <td>
+          <a href="javascript:">
+            <i class="iconfont icon-shanchu" data-id="0"></i>
+            删除
+          </a>
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+  <script>
+    let stuId;
+    const title = document.querySelector('.title');
+    const stuData = JSON.parse(localStorage.getItem('stuData')) || [];
+    const tbody = document.querySelector('tbody');
+    console.log(stuData);
+    render();
+
+    //1.渲染页面
+    function render(){
+        title.innerHTML=`共有数据<span>${stuData.length}</span>条`;
+        const newArr = stuData.map(function (elem, index) {
+          return `
+            <tr>
+                <td>${elem.stuId}</td>
+                <td>${elem.uname}</td>
+                <td>${elem.age}</td>
+                <td>${elem.gender}</td>
+                <td>${elem.salary}</td>
+                <td>${elem.city}</td>
+                <td>${elem.time}</td>
+                <td>
+                    <a href="javascript:" data-id=${index}>
+                        <i class="iconfont icon-shanchu" ></i>
+                        删除
+                    </a>
+                </td>
+            </tr>
+          `
+        });
+        console.log(newArr);
+        tbody.innerHTML=newArr.join('');
+    }
+
+    //2.增加业务
+    const info = document.querySelector('.info');
+    const formBlank = document.querySelectorAll('.info [name]');
+    const uname = document.querySelector('.info .uname');
+    const age = document.querySelector('.info .age');
+    const salary = document.querySelector('.info .salary');
+    const gender = document.querySelector('.info .gender');
+    const city = document.querySelector('.info .city');
+    info.addEventListener('submit',function (event){
+      event.preventDefault();
+      for (let i = 0; i < formBlank.length; i++) {
+          if (formBlank[i].value === ''){
+              return alert('输入内容不能为空！');
+          }
+      }
+      stuId = +localStorage.getItem('stuId')||1;
+      const stu = {
+        stuId:stuId,
+        uname:uname.value,
+        age:age.value, 
+        gender:gender.value, 
+        salary:salary.value, 
+        city:city.value, 
+        time:getSysTime()
+      };
+      stuData.push(stu);
+      localStorage.setItem('stuData',JSON.stringify(stuData));
+      localStorage.setItem('stuId',stuId+1);
+      this.reset();
+      render();
+    });
+
+    //3.删除业务
+    tbody.addEventListener('click',function (event) {
+      const clickEle =event.target
+      if (clickEle.tagName === 'A') {
+        const delIndex = +clickEle.dataset.id;
+        //用confirm()函数弹出确认框，防止误删
+        if (confirm('您确定要删除这条数据吗？')){
+          stuData.splice(delIndex, 1);
+          localStorage.setItem('stuData', JSON.stringify(stuData));
+          render();
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

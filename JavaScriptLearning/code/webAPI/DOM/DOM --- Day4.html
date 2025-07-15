@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM --- Day4</title>
+    <script src="../../../tools.js"></script>
+    <style>
+        .time-box {
+            width: 250px;
+            height: 30px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-box"></div>
+    <div>
+        <ul class="father">
+            <li class="son">x</li>
+            <li class="son">1</li>
+            <li class="son">2</li>
+            <li class="son">3</li>
+            <li class="son">4</li>
+        </ul>
+    </div>
+    <script>
+        //日期对象
+        //1.实例化
+        //i.当前时间
+        const curTime = new Date();
+        //ii.指定时间
+        const date1 = new Date('2025-1-1 08:30:00');
+        console.log(date1);
+        //2.日期对象方法
+        const days = ['日','一','二','三','四','五','六',];
+        const year = curTime.getFullYear();
+        const month = curTime.getMonth()+1;
+        const date = curTime.getDate();
+        const day = days[curTime.getDay()];
+        let hour = curTime.getHours();
+        let min = curTime.getMinutes();
+        let sec = curTime.getSeconds();
+        hour=hour>=10?hour:'0'+hour;
+        min=min>=10?min:'0'+min;
+        sec=sec>=10?sec:'0'+sec;
+        // document.write(`当前时间：${year}-${month}-${date} ${hour}:${min}:${sec} 星期${day}`)
+
+        const timeBox = document.querySelector('.time-box');
+        timeBox.innerHTML=getSystemTime();
+        setInterval(function (){
+            // timeBox.innerHTML=getSystemTime();
+            const curSysTime =new Date();
+            timeBox.innerHTML=curSysTime.toLocaleString();
+        },1000);
+
+         //3.时间戳
+          //getTime()
+        console.log(curTime.getTime());
+          //+new Date()
+        console.log(+new Date());
+          //Date.now()
+        console.log(Date.now());
+        console.log(+new Date('2025-1-16 9:30:00'))
+
+        //节点操作
+        //DOM节点：元素节点（主要）、属性节点、文本节点
+        //查找节点
+        const sonBox=document.querySelector('.father li:nth-child(2)');
+        console.log(sonBox);
+        console.log(sonBox.parentNode);
+        console.log(sonBox.parentNode.children);
+        console.log(sonBox.previousElementSibling);
+        console.log(sonBox.nextElementSibling);
+        //增加节点
+         //创建节点 createElement()
+        const parentEle = document.querySelector('.father');
+        const newli = document.createElement('li');
+        newli.innerHTML=`
+            <p>这是一张风景照</p>
+            <a href="#">
+               <img src="../images/desktop_6.jpg" alt="" style="width: 300px;height: 300px;">
+            </a>
+        `;
+        //追加节点
+        //追加到末尾 父元素.appendChild(...)
+        parentEle.appendChild(newli);
+        //查到父元素的某个子元素之前 父元素.insertBefore(要插的元素,在哪个元素之前)
+        parentEle.insertBefore(newli,parentEle.children[0]);
+
+        //克隆节点 cloneNode(true[将后代节点一起克隆]/false[不克隆后代节点])
+        const newLi = parentEle.children[0].cloneNode(true);
+        parentEle.insertBefore(newLi,parentEle.children[0]);
+
+        //删除节点 removeChild(...)
+        parentEle.removeChild(parentEle.children[0]);
+
+        //M端事件
+        //触摸
+        parentEle.addEventListener('touchstart',function () {
+            console.log('开始触摸！');
+        });
+        parentEle.addEventListener('touchend',function () {
+            console.log('结束触摸！');
+        });
+        parentEle.addEventListener('touchstart',function () {
+            console.log('正在触摸！');
+        });
+
+        //swiper插件
+
+    </script>
+</body>
+</html>

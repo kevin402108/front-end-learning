@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM --- 事件进阶</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 3000px;
+            box-sizing: border-box;
+        }
+
+        .active {
+            color: red;
+        }
+
+        .box {
+            display: none;
+            margin: 10px;
+            width: 200px;
+            height: 200px;
+            overflow: scroll;
+            border: 2px solid #999;
+        }
+
+        .box2 {
+            margin: 20px;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #999;
+            background-color: hotpink;
+        }
+        
+        .box3 {
+            margin: 0 50px 50px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+    <script>
+        //页面加载事件 load（等待【所有】资源加载完毕再执行回调函数）
+        window.addEventListener('load', function () {
+            //阻止默认行为 事件对象.preventDefault()
+            /*const form = document.querySelector('form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+            })
+            */
+            const jumpToBaidu = document.querySelector('a');
+            jumpToBaidu.addEventListener('click', function (e) {
+                e.preventDefault();
+            })
+        })
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="father">
+        <div class="son">son</div>
+        <div class="child">child</div>
+        <p class="daughter">p标签</p>
+    </div>
+    <a href="http://www.baidu.com">百度一下</a>
+    <form action="http://www.itcast.cn">
+        <input type="submit" value="免费注册">
+    </form>
+    <div class="box">
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+        我里面有很多文字
+    </div>
+    <div class="box2">
+        <div class="box3"></div>
+    </div>
+    <script>
+        //事件流：对事件执行过程的描述
+        //两阶段：捕获阶段 冒泡阶段
+
+        /*事件捕获：DOM.addEventListener(事件类型,事件处理函数,是否适用捕获机制) 由外及里，先执行父盒子事件再去执行子盒同名子事件*/
+        /*事件冒泡：DOM.addEventListener(事件类型,事件处理函数,是否适用捕获机制) 由里及外，先执行子盒子事件再去执行父盒同名子事件*/
+        /*1. `addEventListener` 第3个参数为  `true` 表示捕获阶段触发，`false` 表示冒泡阶段触发，默认值为 `false`
+        2. 事件流只会在父子元素具有相同事件类型时才会产生影响*/
+
+        /*阻止事件流动传播：事件对象.stopPropagation()*/
+        const father = document.querySelector('.father');
+        const son = document.querySelector('.son');
+        const child = document.querySelector('.child');
+
+        //事件委托:将子级事件委托到父级同名事件身上，提升程序效率
+        father.addEventListener('click', function (event) {
+            //事件对象.target 获取当前元素
+            console.log(event.target);
+            if (event.target.tagName === 'DIV') {
+                //事件对象.target.tagName 获取当前元素的标签名
+                if (document.querySelectorAll('.active').length === 1) {
+                    document.querySelector('.active').classList.remove('active');
+                }
+                console.log(`点击${event.target.className}元素`);
+                event.target.classList.add('active');
+            }
+        });
+
+        function fn(event) {
+            alert('我是son的子级盒子！');
+            event.stopPropagation();
+        }
+
+        child.addEventListener('click', fn)
+
+        //解绑事件  元素对象.removeEventListener(事件类型,事件处理函数[,阶段])
+        // ps:匿名函数能输无法被解绑
+        child.removeEventListener('click', fn);
+
+        //其他事件
+        //1.页面加载事件
+        //load（等待【所有】资源加载完毕再执行回调函数）
+        //DOMContentLoaded HTML文档被完全加载和解析之后就可出发，无需等待样式表和图片等完全加载
+        //2.元素滚动事件 给window或document添加scroll事件
+        const box=document.querySelector('.box');
+        window.addEventListener('scroll', function () {
+            // console.log('页面滚动了！');
+            //获取HTML写法 scrollTop:竖直方向滚动的像素大小 数字型 不带单位
+           /* const scrollLength= document.documentElement.scrollTop;
+            if (scrollLength>=130){
+                box.style.display='block';
+                box.style.transform=`translateY(${scrollLength-150}px)`;
+                box.style.transition='all .05s'
+            } else {
+                box.style.display='none';
+            }*/
+        });
+
+        /*const box=document.querySelector('.box');
+        box.addEventListener('scroll',function(){
+            console.log(this.scrollTop);
+        })*/
+
+        //滚动到指定位置 scoreTo(x坐标，y坐标)
+
+        //3.页面尺寸事件
+         //窗口尺寸改变 resize
+        window.addEventListener('resize',function (){
+            console.log('窗口尺寸改变！');
+        })
+
+        //clientWidth、clientHeight(不包含border,包含元素宽高、padding)
+        const box2 = document.querySelector('.box2');
+        console.log(box2.clientWidth);
+        console.log(box2.clientHeight);
+
+        //元素尺寸和位置
+         //获取宽高 offsetWidth/offsetHeight(包含border、元素宽高、padding)
+        console.log(box2.offsetWidth);
+        console.log(box2.offsetHeight);
+         //获取位置 offsetLeft/offsetTop 相对于自己定位父级元素左上的距离，若无父级，则以文档左上角为准
+        const box3 = document.querySelector('.box3');
+        console.log(box3.offsetTop);
+        console.log(box3.offsetLeft);
+
+        //getBoundingClientRect() 相对于当前可显示页面的位置
+        console.log(box3.getBoundingClientRect());
+    </script>
+</body>
+</html>

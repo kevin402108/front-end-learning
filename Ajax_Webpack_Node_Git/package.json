@@ -1,0 +1,14 @@
+{
+  "name": "AJAX&WEBPACK&NODE&GIT",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "dependencies": {
+    "@wangeditor/editor": "^5.1.23",
+    "form-serialize": "^0.7.2"
+  }
+}

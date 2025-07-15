@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>表格渲染</title>
+    <link type="text/css" rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="table">
+        <table>
+            <tr>
+                <th>编号</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+            <script>
+                const data = [
+                    { subject: '语文', score: 46 },
+                    { subject: '数学', score: 80 },
+                    { subject: '英语', score: 100 },
+                ]
+                let tot_score=0;
+                for (let i = 0; i < data.length; i++) {
+                    document.write(`
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${data[i].subject}</td>
+                            <td>${data[i].score}</td>
+                            <td><a href="#">删除</a></td>
+                        </tr>
+                    `);
+                    tot_score+=data[i].score;
+                }
+                document.write(`
+                    <tr>
+                        <td colspan="5">
+                            <span class="none">暂无数据</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <span>总分：${tot_score}</span>
+                            <span style="margin-left: 50px;">
+                                平均分：${tot_score/data.length}
+                            </span>
+                        </td>
+                    </tr>
+                `)
+            </script>
+        </table>
+    </div>
+</body>
+</html>

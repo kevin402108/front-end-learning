@@ -1,0 +1,29 @@
+table {
+    width: 600px;
+    text-align: center;
+    border-collapse: collapse;
+
+    caption {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    tr {
+        height: 40px;
+        cursor: pointer; /*悬停光标样式*/
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+    }
+
+    tr:nth-child(1) {
+        background-color: #ddd;
+    }
+    
+    tr:not(:nth-child(1)):hover {
+        /*除了第一行以外悬停时变化底色*/
+        background-color: #eee;
+    }
+}

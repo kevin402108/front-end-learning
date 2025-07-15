@@ -1,0 +1,26 @@
+a {
+    text-decoration: underline;
+    color: #0b0b0b;
+}
+a:hover{
+    color: #0778e9;
+}
+.registerlist {
+    padding:1vw;
+    margin: 10px;
+    height: auto;
+    border: 1px solid rgb(126, 122, 122);
+    background-image: url('../images/scenery.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    border-radius: 5px;
+}
+.workdescribe {
+    padding: 5px;
+    resize: none;
+    width: 70vw;
+    height: 100px;
+    padding: 10px;
+}

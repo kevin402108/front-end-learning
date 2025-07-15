@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>猜数字</title>
+</head>
+<body>
+    <script>
+        function getRandom(N,M){
+            return N+Math.floor(Math.random()*(M-N+1));
+        }
+
+        let num=getRandom(1,10);
+        let times=3;
+        while(times--){
+            let guessNum=+prompt('请输入你猜的 1-10以内 的数字：');
+            if (guessNum<1||guessNum>10){
+                alert('您输入的数字必须在1~10以内，请重新输入！');
+            } else{
+                if (guessNum === num){
+                    alert('恭喜你，猜对了！');
+                    break;
+                } else if (guessNum>num){
+                    if (!times){
+                        alert('所有机会已用尽！');
+                        break;
+                    }
+                    alert(`你猜大了，还有${times}次机会`);
+                } else {
+                    if (!times){
+                        alert('所有机会已用尽！');
+                        break;
+                    }
+                    alert(`你猜小了，还有${times}次机会`);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

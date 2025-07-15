@@ -1,0 +1,160 @@
+<!doctype html>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基本语句练习</title>
+</head>
+<body>
+    <script>
+        /*let score=+prompt('请输入高考成绩：');
+        if(score >= 700){
+            alert('恭喜考入黑马程序员！');
+        }*/
+
+       /* let uname=prompt('请输入用户名：');
+        let pwd=prompt('请输入密码');
+        if(uname === 'pink' && pwd === '123456') {
+            alert('登录成功');
+        } else {
+            alert('用户名或密码错误');
+        }*/
+
+        /*let year=+prompt('请输入年份：');
+        if( !(year%4) && year%100 || !(year % 400)){
+            alert(`${year}年为闰年`);
+        } else {
+            alert(`${year}年为平年`);
+        }*/
+
+        /*let score=+prompt('请输入成绩：');
+        if(score>100||score<0) {
+            alert('输入成绩无效，必须在0~100之间,请重新输入！');
+        } else {
+            if(score>90){
+                alert('优秀');
+            } else if(score>=70) {
+                alert('良好');
+            } else if(score>=60) {
+                alert('及格');
+            } else {
+                alert('不及格');
+            }
+        }*/
+
+        /*let num1=+prompt('请输入第一个数');
+        let num2=+prompt('请输入第二个数');
+        let res=num1>num2?num1:num2;
+        console.log(`两个数最大的那个是${res}`)*/
+
+        /*let num=+prompt('请输入一个数');
+        if (num >= 0) {
+            let res = num < 10 && num >= 0 ? 0 + `${num}` : `${num}`;
+            alert(res);
+        } else {
+            alert('输入的数字必须大于0，请重新输入！');
+        }*/
+
+        /*let num1=+prompt('请输入第一个数:');
+        let num2=+prompt('请输入第二个数:');
+        let operator = prompt('请输入运算符:')
+        switch (operator) {
+            case '+':
+                alert(`您选择的是加法操作，结果为${num1+num2}`);
+                break;
+            case '-':
+                alert(`您选择的是减法操作，结果为${num1-num2}`);
+                break;
+            case '*':
+                alert(`您选择的是乘法操作，结果为${num1*num2}`);
+                break;
+            case '/':
+                if(!num2) {
+                    alert('除数不能为0，请重新输入！');
+                } else {
+                    alert(`您选择的是除法操作，结果为${num1/num2}`);
+                }
+                break;
+            default:
+                alert('运算符必须为 + - * / 中任意一个！' );
+                break;
+        }*/
+
+        /*let cur_num=1,sum=0,even_sum=0;
+        while(cur_num<=100){
+            if(cur_num === 90){
+                break;
+            }
+            document.write(`${cur_num} `);
+            sum+=cur_num;
+            if(cur_num%2 === 0){
+                even_sum+=cur_num;
+            }
+            if(cur_num%3=== 0){
+                cur_num++;
+                continue;
+            }
+            cur_num++;
+        }
+        document.write(`</br>总和：${sum}`);
+        document.write(`</br>偶数和：${even_sum}`);*/
+
+       /* while(true){
+            let ans=prompt('你爱我吗？');
+            if(ans === '爱') {
+                break;
+            }
+        }*/
+
+        /*let sum=0;
+        for (let i = 1; i <= 100; i++) {
+            document.write(`${i}岁`);
+            if(i % 2 === 0){
+                sum+=i;
+            }
+            if(i !== 100) {
+                document.write(`</br>`);
+            }
+        }
+        document.write(`</br>总和：${sum}</br>`);*/
+
+        /*for (let i = 0; i < 5; i++) {
+            document.write('★');
+        }*/
+
+        /*let arr = ['a','b','x','y','z'];
+        for (let i = 0; i < arr.length; i++) {
+            document.write(arr[i]);
+            if(i === 2){
+                continue;
+            }
+            if(i === 3){
+                break;
+            }
+            if(i!==arr.length-1){
+                document.write(' ');
+            }
+        }*/
+
+        /*for (let i = 1; i <= 3; i++) {
+            document.write(`第${i}天</br>`);
+            for (let j = 1; j <= 5 ; j++) {
+                document.write(`记住第${5*(i-1)+j}个单词</br>`);
+            }
+        }*/
+
+      /*  let row=+prompt('请输入行数：');
+        let col=+prompt('请输入列数：');
+        for (let i = 0; i < row; i++) {
+            for (let j = 0; j < col ; j++) {
+                document.write('★');
+            }
+            document.write('</br>');
+        }*/
+
+
+    </script>
+</body>
+</html>

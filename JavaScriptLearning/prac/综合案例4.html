@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>综合案例4 --- 转化时间</title>
+</head>
+<body>
+<script>
+    function getTransformedTime(sec = 0) {
+        let days = parseInt(sec / 3600 / 24);
+        let hours = parseInt(sec / 3600 % 24);
+        let minutes = parseInt(sec / 60 % 60);
+        let seconds = parseInt(sec % 60);
+        days = days >= 10 ? `${days}` : '0' + days;
+        hours = hours >= 10 ? `${hours}` : '0' + hours;
+        minutes = minutes >= 10 ? `${minutes}` : '0' + minutes;
+        seconds = seconds >= 10 ? `${seconds}` : '0' + seconds;
+        return `转换后的时间：${days} 天 ${hours} 小时 ${minutes} 分 ${seconds} 秒`;
+    }
+
+    let sec = prompt('请输入总的秒数：');
+    if (sec !== '' && /^[0-9]+$/.test(sec)) {
+        sec = +sec;
+        let transformedResult = getTransformedTime(sec);
+        document.write(transformedResult)
+    } else {
+        alert('输入为空 或 含有除0~9以外的字符！');
+    }
+</script>
+</body>
+</html>

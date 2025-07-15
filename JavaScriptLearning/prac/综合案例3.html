@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>综合案例3 --- 渲染柱状图</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ad {
+            display: flex;
+            margin: 25% auto;
+            width: 700px;
+            height: 300px;
+            justify-content: space-around;
+            align-items: flex-end;
+            text-align: center;
+            border-bottom: 1px solid #ffc0cb;
+            border-left: 1px solid #ffc0cb;
+
+            div {
+                display: flex;
+                flex-direction: column;
+                width: 50px;
+                justify-content: space-between;
+                background-color: #ffc0cb;
+
+                span {
+                    margin-top: -25px;
+                }
+
+                h4 {
+                    margin-bottom: -30px;
+                    margin-left: -10px;
+                    width: 70px;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+<script>
+    //弹窗获取数据（用数组存储每次输入的数据）
+    let year_statistics = [];
+    for (let i = 0; i < 4; i++) {
+        let season_statistics = +prompt(`请输入第${i + 1}季度的数据`);
+        year_statistics.push(season_statistics);
+    }
+    //渲染页面
+    document.write('<div class="box">');
+    for (let i = 0; i < year_statistics.length; i++) {
+        document.write(`
+        <div style="height: ${year_statistics[i]}px;">
+            <span>${year_statistics[i]}</span>
+            <h4>第${i + 1}季度</h4>
+        </div>
+    `);
+    }
+    document.write('</div>')
+</script>
+</body>
+</html>

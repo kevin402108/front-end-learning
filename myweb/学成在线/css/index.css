@@ -1,0 +1,375 @@
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}      
+
+body {
+    background-color:#f3f5f7;
+}
+
+.header {
+    height: 100px;
+    background-color: #fff;
+    .wrapper {
+        padding-top: 29px;
+        display: flex;
+        
+        .logo a { /*SEO优化*/
+            display: block;
+            height: 41px;
+            width: 195px;
+            background-image: url("../images/logo.png");
+            font-size: 0;
+        }
+
+        .navigator {
+            margin-left: 102px;
+            ul {
+                display: flex;
+                li {
+                    text-wrap: nowrap;
+                    margin-right: 24px;
+                    a {
+                        display: block;
+                        padding: 6px 8px;
+                        line-height: 27px;
+                        font-size: 19px;
+                    }
+                    
+                    a:focus {
+                        /* :focus 选中后暂时固定 */
+                        border-bottom:2px solid #00a4ff;
+                    }
+                }
+            }
+        }
+
+        .search {
+            display: flex;
+            width: 412px;
+            height: 40px;
+            background-color: #f3f5f7;
+            border-radius: 20px;
+            margin-left: 64px;
+            padding-left: 19px;
+            padding-right: 12px;
+
+            input {
+                flex:1;
+                border:0;
+                background-color: transparent;
+                outline: none;/*去掉表单的焦点框*/
+            }
+
+            input::placeholder {
+                font-size: 14px;
+                color:#999;
+            }
+
+            a {
+                /*也可用margin:auto 0实现垂直居中效果*/
+                align-self: center;
+                width: 16px;
+                height: 16px;
+                background-image: url("../images/search.png");
+            }
+        }
+        
+        .user {
+            text-wrap:nowrap;/*防止由于字体过大造成的换行*/
+            margin-left: 32px;
+            margin-top: 4px;
+
+            img {
+                margin-right: 7px;
+                vertical-align:middle;
+            }
+
+            span {
+                font-size: 16px;
+                color:#666;
+            }
+        }
+    }
+}
+
+.banner {
+    height: 420px;
+    background-color: #0092cb;
+    .wrapper {
+        display: flex;
+        justify-content:space-between;
+        height: 420px;
+        background-image: url("../uploads/banner.png");
+
+        .subnav {
+            padding: 3px 20px;
+            width: 191px;
+            height: 420px;
+            background-color: rgba(0,0,0,0.42);
+
+            a {
+                display:block;
+                height: 46px;
+                background-image: url("../images/right.png");
+                background-repeat: no-repeat;
+                background-position: right center;
+                line-height: 46px;
+                font-size: 16px;
+                color:#fff;
+            }
+
+            a:hover {
+                background-image: url("../images/right-hover.png");
+                color:#00a4ff;
+            }
+        }
+
+        .course {
+            margin-top: 60px;
+            width: 218px;
+            height: 305px;
+            border-radius: 10px;
+            background-color: #209dd5;
+
+            h3 {
+                margin-left: 14px;
+                line-height: 48px;
+                font-size: 15px;
+                color:#fff;
+                font-weight: normal;
+            }
+
+            .content {
+                padding: 14px;
+                height: 257px;
+	            background-color: #ffffff;
+	            border-radius: 10px;
+
+                dl {
+                    margin-bottom: 12px;
+                    border-bottom: 1px solid #e0e0e0;
+                    
+                    dt {
+                        margin-bottom: 8px;
+                        line-height: 20px;
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    dd{
+                        margin-bottom: 8px;
+                        font-size: 12px;
+                        line-height: 16px;
+                        span {
+                            color:#00a4ff;
+                        }
+                        strong {
+                            font-weight: normal;
+                            color:#7d7d7d
+                        }
+                    }
+                }
+
+                a {
+                    display: block;
+                    width: 190px;
+	                height: 32px;
+	                background-color: #00a4ff;
+	                border-radius: 15px;
+                    text-align: center;
+                    line-height: 32px;
+                    color:#fff;
+                }
+            }
+        }
+    }
+}
+
+.recommend {
+    display: flex;
+    margin-top: 12px;
+    padding: 18px 20px;
+    height: 60px;
+    background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px rgba(211, 211, 211);
+    h3 {
+        font-size: 18px;
+        color:#00a4ff;
+        font-weight: normal;
+    }
+
+    ul {
+        display: flex;
+        flex:1;
+
+        li {
+            a {
+                padding: 0 24px;
+                border-right: 1px solid #e0e0e0;
+                font-size: 18px;
+            }
+        }
+
+        li:nth-child(9) a {
+            border-right: none;
+        }
+    }
+
+    .modify {
+        font-size: 16px;
+        color: #00a4ff;
+    }
+}
+
+/* 课程推荐区域标题栏 - 公共样式 */
+.hd {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    line-height: 60px;
+    h3 {
+        font-size: 21px;
+        font-weight: normal;
+    }
+
+    .more {
+        padding-right: 20px;
+        background: url(../images/more.png) no-repeat right center;
+        font-size: 14px;
+        color:#999;
+    }
+}
+
+.bd ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    li {
+        margin-bottom: 14px;
+        width: 228px;
+        height: 271px;
+        background-color: #999;
+
+        .course_pic {
+            height: 156px;
+        }
+
+        .text {
+            padding: 20px;
+            height: 115px;
+            background-color: #fff;
+            h4 {
+                margin-bottom: 13px;
+                height: 40px;
+                font-size: 14px;
+                font-weight: normal;
+            }
+
+            p {
+                line-height: 20px;
+                font-size: 14px;
+                color: #999;
+                span {
+                    color:#fa6400
+                }
+
+                i {
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}
+
+.hd ul {
+        display: flex;
+        li {
+            margin-right: 60px;
+            font-size: 16px;
+            .active {
+                color:#00a4ff;
+            }
+        }
+}
+
+.hd {
+    margin-top: 17px;
+}
+
+.bd {
+    display: flex;
+    justify-content: space-between;
+    .left {
+        width: 228px;
+    }
+    .right {
+        width: 957px;
+        .top {
+            height: 100px;
+            margin-bottom: 15px;
+        }
+    }
+    
+}
+
+.course_item {
+    margin-left: 15px;
+}
+
+.footer {
+    margin-top: 60px;
+    padding-top: 60px;
+    height: 273px;
+    background-color: #fff;
+
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .left {
+        width: 440px;
+        p {
+            margin-top: 24px;
+            margin-bottom: 14px;
+            line-height: 17px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .downloadApp {
+            display: block;
+            width: 120px;
+            height: 36px;
+            border:1px solid #00a4ff;
+            text-align: center;
+            line-height: 34px;
+            font-size: 16px;
+            color: #00a4ff;
+        }
+    }
+
+    .right {
+        display: flex;
+
+        dl {
+            margin-left: 130px;
+
+            dt {
+                font-size: 16px;
+                line-height: 23px;
+                margin-bottom: 12px;
+            }
+        }
+
+        a {
+            line-height: 24px;
+            font-size: 14px;
+            color:#666;
+        }
+        
+    }
+}
+
+

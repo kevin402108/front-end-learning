@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>学生信息管理</title>
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+  <h1>新增学员</h1>
+  <form class="info" autocomplete="off">
+    姓名：<input type="text" class="uname" name="uname" />
+    年龄：<input type="text" class="age" name="age" />
+    性别:
+    <select name="gender" class="gender">
+      <option value="男">男</option>
+      <option value="女">女</option>
+    </select>
+    薪资：<input type="text" class="salary" name="salary" />
+    就业城市：<select name="city" class="city">
+      <option value="北京">北京</option>
+      <option value="上海">上海</option>
+      <option value="广州">广州</option>
+      <option value="深圳">深圳</option>
+      <option value="曹县">曹县</option>
+    </select>
+    <button class="add">录入</button>
+  </form>
+
+  <h1>就业榜</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>薪资</th>
+        <th>就业城市</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 
+        <tr>
+          <td>1001</td>
+          <td>欧阳霸天</td>
+          <td>19</td>
+          <td>男</td>
+          <td>15000</td>
+          <td>上海</td>
+          <td>
+            <a href="javascript:">删除</a>
+          </td>
+        </tr> 
+        -->
+    </tbody>
+  </table>
+  <script>
+    const studentLists = [];
+    const info = document.querySelector('.info');
+    const tbody = document.querySelector('table tbody');
+    const unameBox = document.querySelector('.info .uname');
+    const ageBox = document.querySelector('.info .age');
+    const genderBox = document.querySelector('.info .gender');
+    const salaryBox = document.querySelector('.info .salary');
+    const cityBox = document.querySelector('.info .city');
+    function checkEmptyBlank() {
+      let flag=false;
+      /*if (!unameBox.value||!ageBox.value||!salaryBox.value){
+        flag=true;
+      }
+      if (flag){alert('输入数据不能为空！');}*/
+
+      //所有要判断的输入框都带name属性，可利用属性选择器.info [name]选择
+      const arr = document.querySelectorAll('.info [name]');
+      for (let i = 0; i < arr.length; i++) {
+        if (!arr[i].value){
+          return true;
+        }
+      }
+      return flag;
+    }
+
+    //增加学院
+    //思路：先阻止表单点击后默认跳转，将要添加的学员信息添加到数组末尾，然后将数组渲染到页面
+    //注意：html的表单在某些浏览器按下Enter键相当于表单提交，若只给button添加点击或提交事件，会忽略Enter键可能触发的自动提交事件，此处用表单的submit事件更好
+    // const addBtn = document.querySelector('.info .add')
+    // addBtn.addEventListener('click',function (event){
+    let stuNo=1;
+    info.addEventListener('submit',function (event){
+        //阻止表单默认跳转行为
+        event.preventDefault();
+        const isBlankEmpty = checkEmptyBlank();
+        if (isBlankEmpty){
+          this.reset();
+          return alert('输入内容不能为空！');
+        }
+        const studentInfo = {
+          stuNo:+stuNo,
+          uname:unameBox.value,
+          age:ageBox.value,
+          gender:genderBox.value,
+          salary:salaryBox.value,
+          city:cityBox.value,
+        }
+        studentLists.push(studentInfo);
+        stuNo++;
+        //reset() 清空整个表单
+        // info.reset();
+        this.reset();
+        render();
+    })
+
+    //删除学员
+    // key：采用事件委托的思想，利用当前点击的删除的data-id自定义属性作数组中要删除的元素的索引！！！
+    // 步骤：在数组中删除相关学员，然后再将数组中的元素重新渲染
+    tbody.addEventListener('click',function (event){
+        if (event.target.tagName === 'A') {
+            const delIndex = +event.target.dataset.id
+            studentLists.splice(delIndex,1);
+            render();
+        }
+    })
+
+    //渲染页面
+    function render(){
+      //清空之前渲染的行，再渲染最新的数据
+      tbody.innerHTML='';
+      for (let i = 0; i < studentLists.length; i++) {
+        const stuRow = document.createElement('tr');
+        stuRow.innerHTML = `
+          <td>${studentLists[i].stuNo}</td>
+          <td>${studentLists[i].uname}</td>
+          <td>${studentLists[i].age}</td>
+          <td>${studentLists[i].gender}</td>
+          <td>${studentLists[i].salary}</td>
+          <td>${studentLists[i].city}</td>
+          <td>
+            <!--增加一个data-id自定义属性作该行在数组中的索引，以便在点击删除时，删除该行元素在数组中的相应数据-->
+            <a href="javascript:" data-id="${i}">删除</a>
+          </td>
+        `;
+        tbody.appendChild(stuRow);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

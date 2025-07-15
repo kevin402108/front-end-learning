@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组</title>
+</head>
+<body>
+<script>
+    // 声明数组
+    //字面量声明
+    let arr = [11, 2, 'a', true];
+    //new Array()声明
+    let arr2 = new Array(5);
+    console.log(arr2);
+    // 下标取值
+    let elem = arr[3];
+    console.log(elem);
+    console.log(arr.length); //数组长度：数组名.length
+    // 遍历数组
+    for (let i = 0; i < arr.length; i++) {
+        console.log(`第${i + 1}个元素的值：${arr[i]}`);
+    }
+    // 操作数组
+    // 查：数组名[下标]
+    // 改：数组名[下标] = 新值
+    arr[arr.length - 1] = 'Sunday';
+    console.log(arr);
+    //增
+    // 1.数组名.push() 添加到数组末尾,返回值：数组长度
+    let arr1 = 9
+    arr.push(null);
+    arr.push(undefined, 3.5, arr1);
+    console.log(arr);
+    // 2.数组名.unshift() 追加到数组开头，返回值：数组长度
+    arr.unshift(undefined, 3.5, arr1);
+    console.log(arr);
+    //删
+    // 1.数组名.pop()，删除最后一个元素 返回值：最后一个元素的值
+    let del_elem = arr.pop();
+    console.log(del_elem);
+    console.log(arr);
+    // 2.数组名.shift()，删除第一个元素 返回值：第一个元素的值
+    del_elem = arr.shift();
+    console.log(del_elem);
+    console.log(arr);
+    // 3.数组名.splice(start,deleteCount) 删除指定元素
+    del_elem = arr.splice(6, 2);
+    console.log(del_elem);
+    console.log(arr);
+    arr.splice(4); // 删除下标为4以后的所有元素
+    console.log(arr);
+    //排序 数组名.sort()
+    //升序排列
+    arr.sort(function (a, b) {
+        return a - b;
+    });
+    console.log(arr);
+    //降序排序
+    arr.sort(function (a, b) {
+        return b - a;
+    });
+    console.log(arr);
+</script>
+</body>
+</html>

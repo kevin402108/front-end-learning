@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link type="text/css" rel="stylesheet" href="./index.css">
+    <title>渲染英雄</title>
+</head>
+<body>
+    <ul class="list">
+        <script>
+            const data = [
+                { name: '司马懿', imgSrc: '01.jpg' },
+                { name: '女娲', imgSrc: '02.jpg' },
+                { name: '百里守约', imgSrc: '03.jpg' },
+                { name: '亚瑟', imgSrc: '04.jpg' },
+                { name: '虞姬', imgSrc: '05.jpg' },
+                { name: '张良', imgSrc: '06.jpg' },
+                { name: '安其拉', imgSrc: '07.jpg' },
+                { name: '李白', imgSrc: '08.jpg' },
+                { name: '阿珂', imgSrc: '09.jpg' },
+                { name: '墨子', imgSrc: '10.jpg' },
+                { name: '鲁班', imgSrc: '11.jpg' },
+                { name: '嬴政', imgSrc: '12.jpg' },
+                { name: '孙膑', imgSrc: '13.jpg' },
+                { name: '周瑜', imgSrc: '14.jpg' },
+                { name: '1', imgSrc: '15.jpg' },
+                { name: '2', imgSrc: '16.jpg' },
+                { name: '3', imgSrc: '17.jpg' },
+                { name: '4', imgSrc: '18.jpg' },
+                { name: '5', imgSrc: '19.jpg' },
+                { name: '6', imgSrc: '20.jpg' }
+            ];
+            for (let i = 0; i < data.length; i++) {
+                document.write(`
+                    <li>
+                        <img src="./uploads/heros/${data[i].imgSrc}" alt="" title="${data[i].name}">
+                    </li>
+                `)
+            }
+        </script>
+    </ul>
+
+</body>
+</html>

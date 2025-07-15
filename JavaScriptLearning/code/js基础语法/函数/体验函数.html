@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>体验函数</title>
+    <style>
+        span {
+            display: inline-block;
+            margin: 2px;
+            padding: 5px 10px;
+            width: 100px;
+            color: #ff69b4;
+            text-align: center;
+            background-color: #fff9fa;
+            border: 1px solid #ffc0cb;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #ffe9ec;
+        }
+    </style>
+</head>
+<body>
+<script>
+    //声明函数
+    function sheet99() {
+        for (let j = 1; j <= 9; j++) {
+            for (let i = 1; i <= j; i++) {
+                document.write(`<span>${i} X ${j} = ${i * j}</span>`);
+            }
+            document.write('</br>');
+        }
+    }
+
+    //调用函数
+    for (let i = 0; i < 3; i++) {
+        sheet99();
+        document.write(`</br>`);
+    }
+</script>
+</body>
+</html>

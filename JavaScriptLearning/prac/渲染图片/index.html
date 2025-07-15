@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片渲染</title>
+    <link type="text/css" rel="stylesheet" href="./index.css">
+</head>
+<body>
+<script>
+    let png = [
+        './images/1.webp',
+        './images/2.webp',
+        './images/3.webp',
+        './images/4.webp',
+        './images/5.webp',
+        './images/6.webp',
+        './images/7.webp',
+        './images/8.webp',
+        './images/9.webp',
+        './images/10.webp',
+        './images/11.webp',
+        './images/12.webp',
+        './images/13.webp',
+        './images/14.webp',
+        './images/15.webp',
+        './images/16.webp',
+        './images/17.webp',
+        './images/18.webp',
+        './images/19.webp',
+        './images/20.webp',
+    ]
+    while (true) {
+        let num = +prompt('请输入1~20以内的永雄个数：');
+        if (num < 1 || num > 20) {
+            alert('输入有误,请重新输入！');
+        } else {
+            document.write(`<div class="ad">`);
+            document.write(`<ul>`)
+            for (let i = 0; i < num; i++) {
+                document.write(`
+                    <li>
+                        <img src="${png[i]}" alt="">
+                    </li>
+                `)
+            }
+            document.write(`</ul>`);
+            document.write(`</div>`);
+            break;
+        }
+    }
+</script>
+</body>
+</html>

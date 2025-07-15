@@ -1,0 +1,220 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+  li {
+    list-style: none;
+  }
+}
+
+hr {
+  width:100vw;
+}
+/* 用户信息&功能跳转区 */
+.usercolumn {
+  margin: 5px;
+  padding: 5px;
+  text-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.usercolumn li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.usercolumn li a:hover {
+  color: #f71a1a;
+}
+
+.container1 {
+  display: flex;
+  align-items: center;
+}
+
+/* 宣传大图区 */
+.top-section {
+  display: flex;
+  height: 500px;
+  width: 100%;
+}
+
+.hot-phrases {
+  width: 200px;
+  height: 500px;
+  background-color: #3064bb;
+  overflow-y: auto;
+}
+
+.hot-phrases::-webkit-scrollbar{
+  display: none;
+}
+
+.item {
+  display: block;
+  color:#ffffff;
+  text-decoration: none;
+  text-align: center;
+  text-wrap: nowrap;
+  height: 80px;
+  line-height: 80px;
+  background-color: #3064bb;
+  border-bottom: 1px solid #3064bb;
+}
+
+.item:hover {
+  background-color: #608dd9;
+}
+
+.banner {
+  text-wrap: wrap;
+  margin: 5px;
+  width: 100vw;
+  height: 500px;
+  background-color:#f3f3f4;
+  background-image: url(../images/bk.png);
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  text-align: right;
+  color:#333333;
+}
+
+.banner h2 {
+  font-size: 36px;
+  font-weight: normal;
+  line-height: 100px;
+}
+
+.banner p {
+    font-size: 20px;
+}
+
+.banner a {
+  width: 125px;
+  height: 40px;
+  text-decoration: none;
+  color:#ffffff;
+  background-color: #f06b1f;
+  line-height: 40px;
+  display: inline-block;
+  text-align: center;
+}
+
+.winter-scenery-photograph {
+  display: flex;
+  flex-wrap: nowrap; 
+}
+/* 风景图片音乐视频区 */
+.winter-scenery-photograph img {
+  padding: 10px;
+  width: 23%;
+}
+.text {
+  margin-right: 10px;
+  font-weight: 100;
+}
+
+.snowvideo {
+  margin: auto;
+  background-color: #ecf0e8;
+  padding: 0.5vw;
+}
+
+.snowvideo video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.websiteContainer {
+  margin: auto;
+  flex-wrap: nowrap;
+}
+
+.websitelist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1vw;
+  padding: 2vw;
+  background-color: #ecf0e8;
+  list-style: none;
+  border: 2px solid #f6f2f2;
+  border-radius: 8px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.websitelist li {
+  gap: 0.5vw;
+  font-size: 1.5vw;
+  vertical-align: middle;
+}
+
+.websitelist li a {
+  text-decoration: underline;
+  color: #333;
+}
+
+.websitelist li a:hover {
+  color: #e61f00;
+}
+
+.subwebsitelink {
+  margin: 5px 0 0;
+  list-style: circle;
+  font-weight: bold;
+}
+
+.personalinfo {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  margin-bottom: 10px;
+}
+
+.personalinfo th {
+  border: 1px solid #000;
+}
+
+.personalinfo td {
+  border: 1px solid #000;
+}
+
+.footer-links {
+  background-color: #dee7db;
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
+
+.col_links {
+  width: 120;
+}
+
+.col_links dt {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.col_links dd {
+  margin: 10px 0;
+}
+
+.col_links dd a {
+  text-decoration: none;
+  color: #333;
+}
+
+.col_links dd a:hover {
+  color: red;
+}

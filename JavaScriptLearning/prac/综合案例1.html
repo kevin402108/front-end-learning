@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>综合案例1 —— 渲染表格</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            margin: 0 auto;
+            height: 80px;
+            text-align: center;
+            border-collapse: collapse;
+
+            th,td {
+                border:1px solid #000;
+            }
+            
+            th {
+                padding: 5px 30px;
+            }
+            
+            td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>订单确认</h2>
+    <script>
+        //用户输入
+        let price=+prompt('请输入商品价格');
+        let num=+prompt('请输入商品数量');
+        let address=prompt('请输入收货地址');
+        let tot_price=price*num;
+        document.write(`
+            <table>
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品价格</th>
+                    <th>商品数量</th>
+                    <th>总价</th>
+                    <th>收货地址</th>
+                </tr>
+                <tr>
+                    <td>REDMI Turbo 4</td>
+                    <td>${price}元</td>
+                    <td>${num}</td>
+                    <td>${tot_price}元</td>
+                    <td>${address}</td>
+                </tr>
+            </table>
+        `)
+    </script>
+</body>
+</html>

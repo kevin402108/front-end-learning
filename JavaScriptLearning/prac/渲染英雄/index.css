@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    background-color: #000;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    width:500px;
+    margin:20px auto;
+
+    li {
+        position: relative;
+        margin-top: 15px;
+        transition: all 1s;
+        /*transition 过渡效果
+            属性值：
+            1.参与过渡属性：all[全部]|none[无]|property[具体的属性]
+            2.过渡时间： ...s/ms (有多少个属性可写多个时间，也可只用写一个时间。all 只用写一个时间)
+            3.过渡动画类型：linear(匀速)/ease(慢速开始，中间变快，慢速结束)/ease-in(慢速开始)
+            /ease-out(慢速结束)/ease-in-out(慢速开始和慢速结束)/cubic-bezier(n,n,n,n)(自定义)
+            4.开始时间(transition-delay): ...s/ms [可不写]
+         */
+    }
+
+    li:hover {
+        transform: scale(1.5);
+        /* transform
+            属性值：
+            1.transformX() 沿X轴进行位移，正为向右移动，负为向左移动
+            2.transformY() 沿X轴进行位移，正为向下移动，负为向上移动
+            3.translate(...)/translate(...,...)
+              一个值：沿X轴进行位移
+              两个值：第一个值沿X轴进行位移 第二个值沿X轴进行位移
+
+            //不支持行内元素！！！
+            4.scaleX()  沿X轴放缩比例 大于1：放大 小于1：缩放
+            5.scaleY()  沿Y轴放缩比例 大于1：放大 小于1：缩放
+            6.scale()   大于1：放大 小于1：缩放
+              一个值：同时沿X.Y轴放缩比例
+              两个值：第一个值水平放缩比例，第二个值垂直放缩比例
+
+            7.rotateX(...deg)/rotateY(...deg)/rotateZ(...deg) 围绕X/Y/Z轴旋转的角度
+            8.rotate(...deg) 绕z轴旋转的角度
+
+            9.skewX(..deg)/skewY(...deg) 沿X/Y轴倾斜变换的角度
+            10.skew()
+            一个值等同于skewX(...deg)
+            两个值：第一个值为沿X轴倾斜变换的角度，第二个值为沿Y轴倾斜变换的角度
+
+            11.transform-origin:元素变形的原点
+        */
+        z-index: 999;
+        /*z-index值越大，元素层级越高。元素重叠时，层级高的元素会遮盖层级低的元素重叠部分*/
+        /*取值：
+        auto：与父级层次相同，则类似于0
+        number：-2^31+1~2^31-1 (数值越大，层级越高)
+        inherit:继承父级元素的属性值
+        */
+        /*适用范围：只能在 设置了position: relative | absolute | fixed的元素和
+        父元素设置了display: flex属性 的 子元素 中起作用*/
+    }
+
+    img {
+        width: 100px;
+    }
+}

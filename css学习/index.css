@@ -1,0 +1,546 @@
+/* 全局选择器 “*”为通配符 清除默认样式/设置全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    box-sizing: border-box;
+    /* 背景图 默认平铺（复制）效果 */
+    /*background-image: url("image/wintersecenery.webp");*/
+    /* 背景图-平铺效果 repeat(默认）no-repeat repeat-x repeat-y*/
+    /*background-repeat: no-repeat;*/
+    /* 背景图- 位置*/
+    /* 英文 */
+    /*background-position: left;*/
+    /* 数字 */
+    /*background-position: 0;*/
+    /* 背景图-大小 */
+    /* keyword */
+    /* background-size:cover; */
+    /* percentage */
+    /* background-size: 100%; */
+    /* 背景图-固定方式 */
+    /* background-attachment: fixed; */;
+    /* 背景图-复合属性 */
+    background: #fafafa no-repeat center bottom/cover;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 元素选择器 */
+h1 {
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+/* 类选择器 */
+.content {
+    color: aquamarine;
+}
+
+.size {
+    font-size: 30px;
+}
+
+/* id 选择器 */
+#text {
+    color: red;
+    font-size: large;
+}
+
+/* 合并选择器 */
+.content,
+#text {
+    margin-top: 10px;
+}
+
+/* 
+.box1 {
+    text-align: center;
+    width: 100%;
+    height: 500px;
+   background-image: url(../images/winterscene.webp);
+} */
+
+.box2 {
+    color: aquamarine;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+    background-image: url("./image/winterscenery.webp");
+}
+
+/* 文字控制属性 */
+.sampletext {
+    /* font-size */
+    font-size: 20px;
+    /* font-weight */
+    font-weight: bold;
+}
+
+.sampletext em {
+    /* font-style */
+    font-style: normal;
+}
+
+.para {
+    color: blue;
+    font-weight: bold;
+    /* line-height */
+    line-height: 30px;
+    /* font-family */
+    font-family: Consolas, Heiti, 楷体, Microsoft Yahei, sans-serif;
+    /* text-indent */
+    text-indent: 2em;
+}
+
+.demo1 {
+    color: aqua;
+    /* font */
+    font: italic bold 30px/2 Consolas;
+    /* text-align */
+    text-align: center;
+}
+
+.demo2 {
+    text-align: center;
+}
+
+/* 复合选择器 */
+/* 后代选择器 */
+.spanlabel span {
+    font-size: 20px;
+}
+
+/* 子代选择器 */
+.spanlabel > span {
+    color: red;
+}
+
+/* 并集选择器 */
+.spanlabel span,
+.spanlabel p span {
+    font-style: italic;
+}
+
+/* 交集选择器 */
+p.box {
+    text-align: center;
+}
+
+/* 伪类选择器 */
+a:hover {
+    /* hover:悬停 适用于任何标签 */
+    color: red
+}
+
+h4 {
+    color: aqua;
+}
+
+.div3,
+.div4 {
+    display: inline-block;
+}
+
+.span3,
+.span4 {
+    display: block;
+}
+
+/* 结构伪类选择器 */
+/* 
+ E:first-child 查找第一个E元素
+ E:last-child 查找最后一个E元素
+ E:nth-child(N) 查找第n个E元素(n=1,2,…………)
+ E:nth-child(2n) 查找偶数个E元素(n=1,2,…………)
+ */
+
+.struct-selector li:first-child {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.struct-selector li:last-child {
+    color: red;
+}
+
+.struct-selector li:nth-child(3) {
+    color: aqua;
+    font-size: 20px;
+}
+
+.struct-selector li:nth-child(2n) {
+    color: #f6b553;
+}
+
+/* n=0,1,2,…… */
+.struct-selector li:nth-child(2n+1) {
+    color: #9f651f;
+}
+
+.struct-selector li:nth-child(4n) {
+    font-weight: bold;
+    line-height: 30px;
+}
+
+/* n从0开始取 */
+.struct-selector li:nth-child(n+5) {
+    font-style: italic;
+}
+
+/* n从0开始取 */
+.struct-selector li:nth-child(-n+5) {
+    font-family: Consolas, sans-serif;
+}
+
+/* 伪元素选择器 */
+/* 
+ E::before 在E元素里面的最前面加一个虚拟元素
+ E::after  在E元素里面的最后面加一个虚拟元素
+ */
+.struct-selector li:first-child::before {
+    content: "< ";
+}
+
+.struct-selector li:first-child::after {
+    content: " >";
+}
+
+/* 盒子模型 */
+.box-model {
+    overflow: hidden;
+    /* box-sizing:border-box; 解决因内边距增大导致的尺寸问题 */
+    box-sizing: border-box;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    background-color: skyblue;
+
+    /*padding: 20px;*/
+    /*内边距 上下左右尺寸都一样*/
+    /*padding-top: 30px;*/
+    /*单个方向写法*/
+    /* 多值写法 */
+    /*padding: 10px 30px;*/
+    /*上下 左右*/
+    /*padding: 10px 20px 30px 40px;*/
+    /*上右下左*/
+    padding: 10px 30px 40px;
+    /*上 左右 下*/
+
+    /*外边框*/
+    border: 1px dotted #777;
+    border-top: 2px solid orange;
+    border-bottom-style: dashed;
+
+    /* 标框圆角 */
+    border-radius: 50%;
+
+    /*margin: 10px;*/
+    /*外边距*/
+    /*margin-top: 20px;*/
+    /*单个方向写法*/
+    /*margin: 30px 20px;*/
+    /*多值写法*/
+    /* 版心居中:盒子要有相应尺寸 */
+    /*margin: 0 auto;*/
+    margin-bottom: 10px;
+
+    /* margin注意事项 
+    1.当两个元素上下外边距重合时，外边距取两者较大值 
+    2.父子级标签，当子级增加上外边距，父级向下移动相同距离
+     solution:
+     i.取消子级margin，父级设置padding
+     ii.
+    */
+    /* 行内元素加line-height可改变垂直位置 */
+
+    .box-inside {
+        margin-top: 20px;
+        background-color: pink;
+        width: 50px;
+        height: 80px;
+        /* 矩形设置圆角半径为短边长度的一半即刻便为胶囊型 */
+        /* 盒子阴影 */
+        box-shadow: 2px 5px 10px 1px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* float布局 */
+.float1 {
+    .box1 {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+        background-color: red;
+        float: left;
+    }
+
+    .box2 {
+        color: #000;
+        width: 100px;
+        height: 100px;
+        margin-left: 10px;
+        background-color: rgb(68, 255, 0);
+        background-image: none;
+        float: left;
+    }
+}
+
+/* flex布局 */
+.flex {
+    display: flex;
+    height: 300px;
+    border: 1px solid #000;
+    margin: 30px;
+    /* 主轴对齐方式 
+    justify-content:flex-start flex-end center space-between,space-around,space-evenly
+    */
+    /*justify-content: flex-start;
+    justify-content: flex-end;
+    justify-content: center;
+    justify-content: space-between;
+    justify-content: space-around;*/
+    justify-content: space-evenly;
+
+    /* 侧轴对齐方式 
+    align-items(控制所有弹性盒子)/align-self(控制某个弹性盒子):stretch(侧轴方向无尺寸生效)/center
+    */
+    /*align-items: stretch;
+    align-items: center;
+    align-items: flex-start;
+    align-items: flex-end;*/
+
+    /* 修改主轴方向 flex-direction */
+    /*flex-direction: column;
+    align-items: center;
+    flex-direction: row;*/
+
+    /* 弹性盒子换行 flex-wrap*/
+    flex-wrap: wrap;
+
+    /* 行对齐方式(对单行弹性盒子不生效) */
+    /*align-content: flex-start;
+    align-content: flex-end;
+    align-content: center;
+    align-content: space-between;
+    align-content: space-around;*/
+    align-content: space-evenly;
+
+    div {
+        width: 200px;
+        height: 100px;
+        background-color: pink;
+    }
+
+    div:nth-child(n) {
+        align-self: center;
+        /* 弹性伸缩比 */
+        flex: 1;
+    }
+}
+
+.scenery {
+    position: relative;
+    margin: 30px auto;
+    width: 400px;
+    height: 300px;
+    background-color: #f1ecec;
+}
+
+.scenery img {
+    position: absolute;
+    width: 400px;
+}
+
+.scenery span {
+    z-index: 3;
+    /*position: absolute; !*子绝父相,绝对定位会改变显示模式*!*/
+    position: fixed; /*参照：浏览器窗口*/
+    top: 0; /*相对于父级元素某一边的偏移量*/
+    right: 0;
+    width: 120px;
+    height: 40px;
+    color: #f2f2f3;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.scenery h4 {
+    position: relative;
+    top: 270px;
+    z-index: 2;
+    color: black;
+    background-color: inherit;
+    text-align: center;
+}
+
+.scenery .pic1 {
+    z-index: 1; /*z-index 改变定位元素的显示顺序,取值越大越先显示*/
+}
+
+.scenery .pic2 {
+    height: 100px;
+}
+
+.sprites {
+    margin: 5px;
+    width: 200px;
+    height: 200px;
+    background-image: url('image/winterscenery.webp');
+    background-position: -30px -30px;
+}
+
+.service {
+    margin: 50px auto;
+    width: 1188px;
+    height: 42px;
+}
+
+.service ul {
+    display: flex;
+}
+
+.service li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    height: 42px;
+
+}
+
+.service_item h5 {
+    margin-right: 10px;
+    width: 36px;
+    height: 42px;
+    background: url(image/sprites.png) 0 -192px;
+}
+
+.service_item:nth-child(2) h5 {
+    background-position-x: -41px;
+}
+
+.service_item:nth-child(3) h5 {
+    background-position-x: -82px;
+}
+
+.service_item:nth-child(4) h5 {
+    background-position-x: -123px;
+}
+
+.service_item p {
+    color: #444444;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/*slider 模拟轮播图*/
+.vertical-align-test {
+    position: relative;
+    margin:20px auto;
+    width: 700px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: all 1s;
+    border:1px solid #ccc;
+}
+
+.vertical-align-test .scroll-bar {
+    display: flex;
+    height: 400px;
+    overflow: hidden;
+}
+.vertical-align-test img {
+    width: 700px;
+    vertical-align: middle;
+}
+
+.vertical-align-test:hover {
+    transform:translate(0,-10px) scale(1.001);
+    box-shadow: 5px 5px 10px 10px #cccccc;
+    cursor:pointer
+}
+
+.vertical-align-test .prev,
+.vertical-align-test .next {
+    display: none;
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    line-height: 30px;
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.8);
+    top: 50%;
+}
+
+.vertical-align-test .prev {
+    left:0;
+    border-radius: 0 15px 15px 0;
+}
+
+.vertical-align-test .next {
+    right:0;
+    text-align: center;
+    border-radius: 15px 0 0 15px;
+}
+
+.vertical-align-test:hover .prev,
+.vertical-align-test:hover .next {
+    display: block;
+}
+
+.indicator {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    height: 13px;
+    left: 50%;
+    bottom:40px;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.indicator li {
+    margin: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.indicator .active {
+    background-color: #ff5500;
+}
+
+
+
+
+
+
+
+
+
+
+

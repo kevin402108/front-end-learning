@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数练习</title>
+</head>
+<body>
+<script>
+    function getSum() {
+        let a = +prompt('请输入一个数');
+        let b = +prompt('请再输入一个数');
+        let sum = a + b;
+        console.log(sum);
+        sum = 0;
+        for (let i = 1; i < 101; i++) {
+            sum += i;
+        }
+        console.log(sum);
+    }
+
+    getSum();
+
+    function getSum1(arr = []) {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        console.log(sum);
+    }
+
+    let arr = [2, 3, 34534, 423, 343, 323];
+    getSum1(arr);
+    getSum1();
+
+</script>
+</body>
+</html>

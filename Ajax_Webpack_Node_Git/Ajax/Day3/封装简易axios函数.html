@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封装_简易axios函数_获取省份列表</title>
+</head>
+
+<body>
+    <button class="reg-btn">注册用户</button>
+    <p class="my-p"></p>
+    <p class="my-p1"></p>
+
+    <script>
+        //封装简易axio函数
+        function myAxios(config){
+            return new Promise((resolve, reject)=>{
+                const xhr = new XMLHttpRequest()
+
+                if (config.params){
+                    const paramsObj = new URLSearchParams(config.params)
+                    const queryStr = paramsObj.toString()
+                    config.url += `?${queryStr}`
+                }
+
+                xhr.open(config.method||'GET',config.url)
+                xhr.addEventListener('loadend',()=>{
+                    if (xhr.status>=200&&xhr.status<300){
+                        resolve(JSON.parse(xhr.response))
+                    } else {
+                        reject(new Error(xhr.response))
+                    }
+                })
+
+                if (config.data){
+                    xhr.setRequestHeader('Content-Type','application/json')
+                    const jsonObj = JSON.stringify(config.data)
+                    xhr.send(jsonObj)
+                } else{
+                    xhr.send()
+                }
+            })
+        }
+
+        //测试无参数查询
+       /* myAxios({
+          url:'http://hmajax.itheima.net/api/province'
+        }).then(result=>{
+          const pList = result.list
+          document.querySelector('.my-p').innerHTML = pList.join('<br>')
+        }).catch(error=>{
+          document.querySelector('.my-p').innerHTML = error.message
+        })*/
+
+        //测试含参数查询
+        /*myAxios({
+          url:'http://hmajax.itheima.net/api/area',
+          params:{
+            pname:'黑龙江省',
+            cname:'哈尔滨市'
+          }
+        }).then(result=>{
+          const areas = result.list
+          document.querySelector('.my-p1').innerHTML = areas.join('<br>')
+        }).catch(error=>{
+          document.querySelector('.my-p1').innerHTML = error.message
+        })*/
+
+        //测试含参数数据提交
+        document.querySelector('.reg-btn').addEventListener('click',()=>{
+            myAxios({
+                url:'http://hmajax.itheima.net/api/register',
+                method:'POST',
+                data:{
+                    username:'kevin042105',
+                    password:'214365Yt'
+                }
+            }).then(result=>{
+                alert(result.message)
+            }).catch(error=>{
+                console.log(error.message)
+            })
+        })
+
+    </script>
+</body>
+

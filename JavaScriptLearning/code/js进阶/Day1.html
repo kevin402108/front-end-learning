@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //闭包
+    function outer() {
+        let i = 0;
+
+        function fn() {
+            i++;
+            console.log(i);
+        }
+
+        return fn;
+    }
+
+    const res = outer();
+    res();
+
+    //动态参数 arguments
+    function getSum() {
+        console.log(arguments);
+        let sum = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+
+    // console.log(getSum(2,3,2323));
+
+    //剩余参数 开发中更常使用
+    function getSum(a, b, ...arr) {
+        console.log(arr);
+        if (arr.length > 0) {
+            console.log(Math.max(...arr), Math.min(...arr));
+        }
+    }
+
+    getSum(2, 3);
+    getSum(2, 3, 4, 5, 3);
+    //合并数组
+    /*const arr1 = [1, 2, 3];
+    const arr2 = [4, 5, 7];
+    const arr = [...arr1, ...arr2];
+    console.log(arr);*/
+
+    // 箭头函数
+    // ps:只能替代匿名函数、函数表达式，无法替代有名字的函数！！！
+    const fn = () => {
+        console.log('使用箭头函数!');
+    }
+    fn();
+
+    //只有一个参数，括号可省略 fn = 参数名 => {}
+    //函数体只有一行时，大括号可省略。
+    // const fn1 = x => {console.log(x);}
+    const fn1 = x => console.log(x);
+    fn1(2);
+    //若函数体只有一行且为return语句,则可省略return
+    const fn2 = x => x + x;
+    console.log(fn2(2));
+    //加括号的函数体可返回对象的字面量表达式
+    const fn3 = uname => ({uname: uname});
+    console.log(fn3('Kevin042108'));
+
+    //箭头函数无动态参数arguments,但可以有剩余参数 ...数组名
+    const getSum2 = (...arr) => {
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+    console.log(getSum2(2, 3, 4));
+
+    //箭头函数this: 箭头函数没有this，写在其中的this是上一层作用域的 this 指向
+    //DOM事件回调函数不推荐使用箭头函数,此时this为window
+    const fn4 = () => console.log(this);
+    fn4();
+
+    const obj = {
+        uname: 'kevin042108',
+        //箭头函数没有this(对象的大括号不是作用域！！！),则指向obj的上一层作用域window
+        sleep: () => {
+            console.log(this);
+            console.log('我在睡觉！');
+        }
+    };
+    obj.sleep();
+
+    //解构赋值
+    //1.数组解构
+    /*const arr =[10,20,30];
+    const [min,avg,max] =arr;
+    console.log(min,avg,max);*/
+
+    const [a0, b0, c0, d0 = 4] = [1, 2, 3];
+    console.log(a0, b0, c0, d0);
+
+    const [a1, b1, ...c1] = [2, 7, 10, 23];
+    console.log(a1, b1, c1);
+
+    const [a2,b2,[c2,d2]]=[1,2,[3,4]];
+    console.log(a2, b2, c2,d2);
+
+    //2.对象解构
+    //属性名和对应的变量名必须一致,如有冲突，可以用属性名:别名代替
+    const name="kevin042108";
+    /*const {name:username,age}={
+        name:'kevinChan042108',
+        age:'18'
+    };
+    console.log(username, age);*/
+
+    //解构数组对象
+    const goods =[
+        {
+            name:'REDMI Turbo 4',
+            brand:'REDMI',
+            color:'黑色',
+            price:2199,
+        }
+    ];
+    const [{name:goodsName,brand,color,price}]=goods;
+    console.log(goodsName,brand,color,price);
+
+    //多级对象解构 解构内层对象要加对象名
+    const person = {
+        name:'kevinchan',
+        family:{
+            mother:'Lam',
+            father:'Chan',
+            brother:'Chan'
+        },
+        age:20
+    };
+   /* const {uname,family:{mother,father,brother},age}=person;
+    console.log(name,mother,father,brother,age);*/
+
+    const [{uname,family:{mother,father,brother},age}] =[person];
+    console.log(name,mother,father,brother,age);
+
+    //forEach
+    const arr=['red','pink','blue'];
+    arr.forEach((ele,index)=>{
+        console.log(index, ele);
+    });
+
+    //filter(callbackFn[, thisArg])
+    //callbakFn:为数组中的每个元素执行的函数。它应该返回一个真值以将元素保留在结果数组中，否则返回一个假值。
+    //返回值：给定数组的一部分的浅拷贝，其中只包括通过提供的函数实现的测试的元素。如果没有元素通过测试，则返回一个空数组，不会改变 this
+    const arr1 = [1,4,7,12,23,34,35,39,45];
+    const newArr = arr1.filter(elem=>elem>10&&elem<40);
+    console.log(newArr);
+</script>
+</body>
+</html>

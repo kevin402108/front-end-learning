@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>BOM</title>
+    <style>
+        img {
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .login-info label {
+            display: flex;
+            margin: 10px 0;
+
+            span {
+                display: block;
+                width: 70px;
+            }
+        }
+    </style>
+    <script>
+        //navigator
+        //案例：检测是否为移动端
+        (function () {
+            const userAgent = navigator.userAgent
+            // 验证是否为Android或iPhone
+            const android = userAgent.match(/(Android);?[\s\/]+([\d.]+)?/);
+            const iphone = userAgent.match(/(iPhone\sOS)\s([\d_]+)/);
+            // 如果是Android或iPhone，则跳转至移动站点
+            if (android || iphone) {
+                location.href = 'http://m.itcast.cn';
+            }
+        })();
+    </script>
+</head>
+<body>
+<!--    <img class="ad" src="./images/ad.png" alt="">-->
+<a class="auto-jump-link" href="http://www.baidu.com">支付将在<span>5</span>秒钟跳转首页</a>
+<form action="" class="login-info">
+    <label><span>用户名：</span><input autocomplete="true" name="username" type="text"></label>
+    <label><span>密码：</span><input autocomplete="true" name="pwd" type="password"></label>
+    <button>登录</button>
+</form>
+<a href="#/my">我的</a>
+<a href="#/friend">朋友</a>
+<a href="#/download">下载</a>
+<a class="reload" href="#">刷新</a>
+<script>
+    //window对象(见note.md)
+
+    //定时器 --- 延时函数 setTimeout(回调函数,等待毫秒数)
+    let timerID = setTimeout(function () {
+        console.log('时间到了！');
+    }, 5000);
+    clearTimeout(timerID);
+
+    //案例：5秒自动关闭的ad
+    const ad = document.querySelector('.ad');
+    setTimeout(function () {
+        // ad.style.display='none';
+    }, 5000);
+
+    //location对象
+    //href 跳转至链接所对应的页面
+    console.log(location.href);
+    const link = document.querySelector('.auto-jump-link');
+    let resTime = 5;
+    let timerID2 = setInterval(function () {
+        resTime--;
+        link.innerHTML = `支付将在<span>${resTime}</span>秒钟跳转首页`;
+        if (resTime === 0) {
+            //记得结束定时器！！！
+            clearInterval(timerID2);
+            // location.href='http://www.baidu.com';
+        }
+    }, 1000);
+    //search(传表单数据时以？开头使用)、hash（单页面内容变换）
+    //reload() 页面刷新
+    const reload = document.querySelector('.reload');
+    reload.addEventListener('click', function () {
+        location.reload();
+    });
+
+    //history对象 back()、forward()、go(参数)
+
+</script>
+</body>
+</html>

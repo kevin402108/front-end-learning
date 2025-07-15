@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day4</title>
+    <!-- 引入三方lodash js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            font-size: 100px;
+            color: #FFFFFF;
+            text-align: center;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <p>发送短信</p>
+    <div class="box">0</div>
+    <script>
+        //深浅拷贝（针对对象而言！！！）
+        //浅拷贝的是地址,用展开运算符或assign可解决单层对象浅拷贝带来的问题。多层对象难以避免浅拷贝带来的问题。
+        const obj = {
+            uname:'pink',
+            age:20,
+            hobby:['sport','watch TV'],
+            family:{
+                brother:'Little Pink'
+            }
+        }
+        /*const o = obj;
+        o.age=18;
+        console.log(o, obj);*/
+
+        //{...obj}展开符
+        /*const o = {...obj};
+        o.age=18;
+        console.log(o, obj);*/
+
+        //Object.assign()
+        const o ={};
+        /*Object.assign(o, obj);
+        o.age=18;
+        console.log(o, obj);*/
+
+        //深拷贝 拷贝的是对象
+        //递归实现
+        function deepCopy(oldObj,newObj){
+            for (let key in oldObj) {
+                //一定要先拷贝数组再拷贝对象，否则数组会直接被当成对象进行处理！！！
+                if (oldObj[key] instanceof Array){
+                    newObj[key] = [];
+                    deepCopy(oldObj[key],newObj[key]);
+                } else if (oldObj[key] instanceof Object){
+                    newObj[key] = {};
+                    deepCopy(oldObj[key],newObj[key]);
+                } else {newObj[key]=oldObj[key];}
+            }
+            return newObj;
+        }
+        deepCopy(obj, o);
+        console.log(o);
+
+        //lodash库 记得引用js文件
+        const o1 = _.cloneDeep(obj);
+        o1.family.brother = 'KEVIN CHAN'
+        console.log(obj,o1);
+
+        //JSON：用stringify将对象转换为JSON字符串，再用parse重新转换成新的对象，转换后对象的值相同但已不是同一对象
+        const o2 = JSON.parse(JSON.stringify(obj));
+        o2.family.brother='OLD PINK'
+        console.log(obj,o2);
+
+        //异常处理
+        function fn(x,y) {
+            if (!x||!y){
+                throw new Error('参数不能为空！');
+            }
+            return x+y;
+        }
+
+        try {
+            // debugger //相当于在此处打breakpoint
+            document.querySelector('.p').style.color='red';
+            fn();
+        } catch (error) {
+            // alert('代码执行出错！');
+            console.log(error.message);
+        } finally {
+            // alert('继续执行后面的代码！');
+        }
+
+        //改变this
+        //call(thisArg,agr1,arg2,...)
+        const per ={
+            uname:'kevinChan'
+        }
+        function f(x,y) {
+            console.log(this);
+            // console.log(x+y);
+        }
+        f.call(null,1,2);
+
+        //apply(thisArg,argsArray)
+        console.log(Math.max.apply(null,[32341,327,32,434,343,42334]));
+
+        //bind(thisArg[,arg1,arg2,...]) 不会立即调用，但可以改变this值
+        const p = document.querySelector('p');
+        p.addEventListener('click',function (){
+            this.style.color = '#999';
+            setTimeout(function (){
+                this.style.color='black';
+            }.bind(p),2000);
+        });
+
+        //性能优化
+        //防抖 debounce 单位时间内频繁触发的事件只执行最后一次
+        let num=0;
+        function increaseNum() {
+            box.innerHTML=num++;
+        }
+        const box = document.querySelector('.box');
+        // box.addEventListener('mousemove', _.debounce(increaseNum,500));
+
+        let timerID = null;
+        //底层实现
+        function debounce(fn, t) {
+            return function () {
+                //遇到新事件时，关闭已有定时器，重新开启一个新的定时器
+                if (timerID){clearTimeout(timerID);}
+                timerID = setTimeout(()=>fn(),t);
+            }
+        }
+        // box.addEventListener('mousemove',debounce(increaseNum, 500));
+
+        //节流 throttle 单位时间内频繁触发的事件只执行一次
+        box.addEventListener('mousemove',_.throttle(increaseNum,500));
+
+        //底层实现
+        function throttle(fn,t){
+            return function (){
+                //保证当前只有一个定时器在执行，如有定时器则不执行
+                if (!timerID){
+                    timerID = setTimeout(()=> {
+                        //先执行函数，时间到了再关闭定时器，保证能重新开启
+                        fn();
+                        //setTimeout无法删除定时器!!!  应使用timerID=null
+                        timerID = null;
+                    },t);
+                }
+            }
+        }
+        box.addEventListener('mousemove',throttle(increaseNum,1000));
+    </script>
+</body>
+</html>

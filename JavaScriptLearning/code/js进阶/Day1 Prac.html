@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day1 Prac</title>
+</head>
+<body>
+    <script>
+        //交换变量
+        let a = 1, b = 2;
+        [b, a] = [a, b]
+        console.log(a, b)
+
+        const pc = ['海尔', '联想', '小米', '方正'];
+        const [hr, lx, xm, fz] = pc;
+        console.log(hr, lx, xm, fz);
+
+        function getValue() {
+            return [100, 60];
+        }
+
+        const [max, min] = getValue();
+        console.log(max, min);
+
+        const pig = {
+          name:'佩奇',
+          age:6
+        };
+        /*const {name,age}=pig;
+        console.log(name, age);*/
+
+        const {name:uname,age}=pig;
+        console.log(uname, age);
+
+        const goods =[
+            {
+              goodsName:'小米',
+              price:1999
+            },
+        ];
+        const [{goodsName,price}]=goods;
+        console.log(goodsName,price);
+    </script>
+</body>
+</html>

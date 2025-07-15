@@ -1,0 +1,38 @@
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略 IDE 和编辑器生成的文件
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 忽略日志和缓存文件
+*.log
+*.tmp
+*.cache
+
+# 忽略依赖目录
+node_modules/
+bower_components/
+
+# 忽略构建输出目录
+dist/
+build/
+out/
+*.exe
+*.dll
+
+# 忽略环境文件
+.env
+.env.local
+.env.development
+.env.production
+
+# 忽略压缩文件
+*.zip
+*.tar.gz
