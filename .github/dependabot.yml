@@ -1,0 +1,82 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git/Git"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git/WebPack_Node/Webpack"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git/WebPack_Node/Nodejs/011"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git/WebPack_Node/Nodejs/09"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git/WebPack_Node/Nodejs/08"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/Ajax_Webpack_Node_Git/WebPack_Node/Nodejs/010 --- 包/utils"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/JavaScriptLearning"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
+  - package-ecosystem: "npm"
+    directory: "/JavaScriptLearning/lib/swiper-11.0.3/swiper"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    security-updates: true
+    allow:
+      - dependency-type: "all"
